@@ -1,0 +1,55 @@
+title: Zjc's Blog
+description: My learning footprints in CS
+author: Jingcheng Zhu
+github: https://github.com/Zzz-Coding
+about: I'm a programmer in Java C# Javascript.
+disqus_shortname: cslearning
+google_analytics: UA-XXXXXXXX-Y
+avatar_url: /static/img/profile.jpeg
+
+enableTags: true
+tagarray: []
+
+collections:
+  project:
+    output: true
+    permalink: /project/:path/
+
+social:
+    - icon: fa-facebook
+      link: "#"
+    - icon: fa-twitter
+      link: "#"
+    - icon: fa-linkedin
+      link: "#"
+    - icon: fa-stack-exchange
+      link: "#"
+    - icon: fa-github
+      link: "https://github.com/Zzz-Coding"
+
+share:
+  twitter_username: github.io
+  fb_appid: 1749788565247320
+
+urls:
+    - text: About Me
+      url: /about/
+    - text: My Projects
+      url: /projects/
+
+url: "https://Zzz-Coding.github.io"
+baseurl: ""
+paginate: 20
+per_page: 20
+paginate_path: "/page/:num/"
+markdown: kramdown
+gems:
+  - jekyll-paginate
+  - jekyll-gist
+
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all
+  ignore:
+    envs: ['development']
