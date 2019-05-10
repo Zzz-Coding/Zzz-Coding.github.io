@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/static/img/icons8-dog-bone-50.png" />
+    <title>Zjc's Blog</title>
+    <meta name="author" content="Jingcheng Zhu" />
+    <meta name="description" content="Learning Summary (1)" />
+    <meta name="keywords" content="Learning Summary (1), Zjc's Blog, " />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+    <meta content="1749788565247320" property="fb:app_id">
+    <meta content="Zjc's Blog" property="og:site_name">
+
+    
+
+    
+      <meta content="Learning Summary (1)" property="og:title">
+      <meta content="article" property="og:type">
+    
+
+    
+      <meta content="My learning footprints in CS" property="og:description">
+    
+
+    
+      <meta content="http://localhost:4000/2019/05/10/learning-summary-(1).html" property="og:url">
+    
+
+    
+      <meta content="2019-05-10T00:00:00+08:00" property="article:published_time">
+      <meta content="http://localhost:4000/about/" property="article:author">
+    
+
+    
+      <meta content="http://localhost:4000/static/img/profile.jpeg" property="og:image">
+    
+
+    
+      
+    
+
+    
+      
+    
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@github.io">
+    <meta name="twitter:creator" content="@github.io">
+
+    
+      <meta name="twitter:title" content="Learning Summary (1)">
+    
+
+    
+      <meta name="twitter:url" content="http://localhost:4000/2019/05/10/learning-summary-(1).html">
+    
+
+    
+      <meta name="twitter:description" content="My learning footprints in CS">
+    
+
+    
+
+    <!-- Font awesome icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/static/css/syntax.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300italic,300,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/super-search.css">
+    <link rel="stylesheet" href="/static/css/thickbox.css">
+    <link rel="stylesheet" href="/static/css/projects.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+
+    
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-sm-3">
+        <div class="fixed-condition">
+          <a href="/"><img class="profile-avatar" src="/static/img/profile.jpeg" height="75px" width="75px" /></a>
+          <h1 class="author-name">Jingcheng Zhu</h1>
+          
+            <div class="profile-about">
+              I'm a programmer in Java C# Javascript.
+            </div>
+          
+          <div class="social">
+            <ul>
+              
+                <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+              
+                <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+              
+                <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+              
+                <li><a href="#" target="_blank"><i class="fa fa-stack-exchange"></i></a></li>
+              
+                <li><a href="https://github.com/Zzz-Coding" target="_blank"><i class="fa fa-github"></i></a></li>
+              
+            </ul>
+          </div>
+          <div class="search" id="js-search">
+            <input type="text" placeholder="(sitemap)~$ type to search" class="search__input form-control" id="js-search__input">
+            <ul class="search__results" id="js-search__results"></ul>
+          </div>
+          <hr />
+          <ul class="sidebar-nav">
+            <strong>Navigation</strong>
+            <li><a href="/">Home</a></li>
+            
+              <li><a class="about" href="/about/">About Me</a></li>
+            
+              <li><a class="about" href="/projects/">My Projects</a></li>
+            
+          </ul>
+        </div>
+        <!-- end /.fixed-condition -->
+      </div>
+      <div class="col-sm-8 col-offset-1 main-layout">
+        <header class="post-header">
+  <h1 class="post-title">Learning Summary (1)</h1>
+</header>
+
+<span class="time">10 May 2019</span>
+
+  <span class="categories">
+    &raquo; 
+  </span>
+
+
+<div class="content">
+  <div class="post"><h2 id="algorithm">Algorithm</h2>
+
+<h4 id="--cracking-the-code-interview-chapter-1-arrays-and-strings">- Cracking the Code Interview (Chapter 1 Arrays and Strings)</h4>
+
+<ol>
+  <li>
+    <p><strong>Determine if a string has all unique characters</strong></p>
+
+    <p>Use HashMap to count characters, when <code class="highlighter-rouge">count.containsKey(char), return false</code></p>
+
+    <p>or use <code class="highlighter-rouge">count[256]</code> if ASCII</p>
+  </li>
+  <li>
+    <p><strong>Remove duplicates in a string without using additional buffer</strong></p>
+
+    <ul>
+      <li>
+        <p><em>(no large additional buffer but O(n^2))</em> use a <code class="highlighter-rouge">tail</code> pointer to record; before <code class="highlighter-rouge">tail</code> are all different chars;</p>
+
+        <p>compare all chars before <code class="highlighter-rouge">tail</code> with <code class="highlighter-rouge">str[i]</code>, if all different, <code class="highlighter-rouge">tail++; str[tail] = str[i]</code></p>
+      </li>
+      <li>
+        <p><em>(constant additional buffer O(n))</em> use <code class="highlighter-rouge">count[256]</code> to record if a certain character appears;</p>
+
+        <p>also use a <code class="highlighter-rouge">tail</code> pointer, <code class="highlighter-rouge">if count[c] == false</code> then <code class="highlighter-rouge">str[tail] = c; tail++; count[c] = true</code></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Anagram</strong></p>
+
+    <p>different length =&gt; <code class="highlighter-rouge">return false</code></p>
+
+    <p>use <code class="highlighter-rouge">counts[256]</code> to count the frequency of every character in <code class="highlighter-rouge">s1</code>  <code class="highlighter-rouge">count[c]++</code>;</p>
+
+    <p>then scan <code class="highlighter-rouge">s2</code> check <code class="highlighter-rouge">if counts[c] == 0 return false</code>  <code class="highlighter-rouge">counts[c]--</code></p>
+  </li>
+  <li>
+    <p><strong>Replace all spaces in a string with “%20”</strong></p>
+
+    <p>count the number of spaces to calculate the new length of string <code class="highlighter-rouge">newLen = len + count * 2</code></p>
+
+    <p>use a pointer to record the position to copy we can copy from the end of the string</p>
+  </li>
+  <li>
+    <p><strong>Rotate N*N matrix by 90 degrees</strong></p>
+
+    <p>Start from the external layers(round) of the matrix, then internal layers</p>
+
+    <p><strong>1</strong>  1  1  1  <strong>1</strong>	 <code class="highlighter-rouge">int layer = 0; layer &lt; N / 2; layer++</code></p>
+
+    <p>1  1  1  1  1	 In the above for loop, we have <code class="highlighter-rouge">first = layer; last = N - 1 - layer</code></p>
+
+    <p>1  1  1  1  1			then loop <code class="highlighter-rouge">i</code> from <code class="highlighter-rouge">first</code> to <code class="highlighter-rouge">last</code>, we have <code class="highlighter-rouge">offset = i - first</code></p>
+
+    <p>1  1  1  1  1				record the top value <code class="highlighter-rouge">int top = matrix[first][i]</code></p>
+
+    <p><strong>1</strong>  1  1  1  <strong>1</strong>				<code class="highlighter-rouge">matrix[first][i] = matrix[last - offset][first]</code></p>
+
+    <p>/*   then    */				<code class="highlighter-rouge">matrix[last - offset][first] = matrix[last][last - offset]</code></p>
+
+    <p>1 <strong>1</strong>  1  1  1					<code class="highlighter-rouge">matrix[last][last - offset] = matrix[i][last]</code></p>
+
+    <p>1  1  1  1  <strong>1</strong>					<code class="highlighter-rouge">matrix[i][last] = top</code></p>
+
+    <p>1  1  1  1  1</p>
+
+    <p><strong>1</strong>  1  1  1  1</p>
+
+    <p>1  1  1  <strong>1</strong>  1</p>
+  </li>
+  <li>
+    <p><strong>If an element in M*N matrix is 0, set its row and column to 0</strong></p>
+
+    <p>record all the 0 elements’ positions, its row and column;</p>
+
+    <p>set 0 according to that record <code class="highlighter-rouge">if row[i] == true || col[j] == true , then  matrix[i][j] = 0 </code></p>
+  </li>
+  <li>
+    <p><strong>check s2 is a rotation of s1</strong></p>
+
+    <p>check if length equal</p>
+
+    <p>concatenate s1 with itself, then check if s2 is a substring of that</p>
+  </li>
+</ol>
+
+</div>
+  <div class="share-page">
+  <span style="float: left;">Share this on &rarr;&nbsp;&nbsp;</span>
+
+  <!-- Twitter -->
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="github.io">Tweet</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+  <!-- Facebook -->
+  <div class="fb-share-button" data-href="http://localhost:4000/2019/05/10/learning-summary-(1).html" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1749788565247320";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+</div>
+
+
+  
+    
+      
+  
+    
+      
+        
+    
+        
+    
+  
+  
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/python/django/2016/12/29/top-10-python-libraries-of-2016.html">&laquo; Top 10 Python libraries of 2016</a>
+  
+  
+</div>
+
+<div class="disqus-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* <![CDATA[ */
+    var disqus_shortname = "cslearning";
+    var disqus_identifier = "http://localhost:4000_Learning Summary (1)";
+    var disqus_title = "Learning Summary (1)";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    /* ]]> */
+  </script>
+</div>
+
+        <footer>
+          &copy; Jingcheng Zhu
+          
+            - <a href="https://github.com/Zzz-Coding">https://github.com/Zzz-Coding</a> - Powered by Jekyll.
+          
+          <div class="btn-github" style="float:right;">
+            <iframe src="https://ghbtns.com/github-btn.html?user=agusmakmun&repo=agusmakmun.github.io&type=star&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
+            <iframe src="https://ghbtns.com/github-btn.html?user=agusmakmun&repo=agusmakmun.github.io&type=fork&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
+          </div>
+        </footer>
+      </div>
+      <!-- end /.col-sm-8 -->
+    </div>
+    <!-- end /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/super-search.js"></script>
+    <script src="/static/js/thickbox-compressed.js"></script>
+    <script src="/static/js/projects.js"></script>
+  </body>
+</html>
+

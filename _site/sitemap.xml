@@ -5,9 +5,106 @@
     <description>My learning footprints in CS</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/sitemap.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 08 May 2019 17:50:06 +0800</pubDate>
-    <lastBuildDate>Wed, 08 May 2019 17:50:06 +0800</lastBuildDate>
+    <pubDate>Fri, 10 May 2019 23:06:23 +0800</pubDate>
+    <lastBuildDate>Fri, 10 May 2019 23:06:23 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Learning Summary (1)</title>
+        <description>&lt;h2 id=&quot;algorithm&quot;&gt;Algorithm&lt;/h2&gt;
+
+&lt;h4 id=&quot;--cracking-the-code-interview-chapter-1-arrays-and-strings&quot;&gt;- Cracking the Code Interview (Chapter 1 Arrays and Strings)&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Determine if a string has all unique characters&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;Use HashMap to count characters, when &lt;code class=&quot;highlighter-rouge&quot;&gt;count.containsKey(char), return false&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;or use &lt;code class=&quot;highlighter-rouge&quot;&gt;count[256]&lt;/code&gt; if ASCII&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Remove duplicates in a string without using additional buffer&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;em&gt;(no large additional buffer but O(n^2))&lt;/em&gt; use a &lt;code class=&quot;highlighter-rouge&quot;&gt;tail&lt;/code&gt; pointer to record; before &lt;code class=&quot;highlighter-rouge&quot;&gt;tail&lt;/code&gt; are all different chars;&lt;/p&gt;
+
+        &lt;p&gt;compare all chars before &lt;code class=&quot;highlighter-rouge&quot;&gt;tail&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;str[i]&lt;/code&gt;, if all different, &lt;code class=&quot;highlighter-rouge&quot;&gt;tail++; str[tail] = str[i]&lt;/code&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;em&gt;(constant additional buffer O(n))&lt;/em&gt; use &lt;code class=&quot;highlighter-rouge&quot;&gt;count[256]&lt;/code&gt; to record if a certain character appears;&lt;/p&gt;
+
+        &lt;p&gt;also use a &lt;code class=&quot;highlighter-rouge&quot;&gt;tail&lt;/code&gt; pointer, &lt;code class=&quot;highlighter-rouge&quot;&gt;if count[c] == false&lt;/code&gt; then &lt;code class=&quot;highlighter-rouge&quot;&gt;str[tail] = c; tail++; count[c] = true&lt;/code&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Anagram&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;different length =&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;return false&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;use &lt;code class=&quot;highlighter-rouge&quot;&gt;counts[256]&lt;/code&gt; to count the frequency of every character in &lt;code class=&quot;highlighter-rouge&quot;&gt;s1&lt;/code&gt;  &lt;code class=&quot;highlighter-rouge&quot;&gt;count[c]++&lt;/code&gt;;&lt;/p&gt;
+
+    &lt;p&gt;then scan &lt;code class=&quot;highlighter-rouge&quot;&gt;s2&lt;/code&gt; check &lt;code class=&quot;highlighter-rouge&quot;&gt;if counts[c] == 0 return false&lt;/code&gt;  &lt;code class=&quot;highlighter-rouge&quot;&gt;counts[c]--&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Replace all spaces in a string with “%20”&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;count the number of spaces to calculate the new length of string &lt;code class=&quot;highlighter-rouge&quot;&gt;newLen = len + count * 2&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;use a pointer to record the position to copy we can copy from the end of the string&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Rotate N*N matrix by 90 degrees&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;Start from the external layers(round) of the matrix, then internal layers&lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;1&lt;/strong&gt;  1  1  1  &lt;strong&gt;1&lt;/strong&gt;	 &lt;code class=&quot;highlighter-rouge&quot;&gt;int layer = 0; layer &amp;lt; N / 2; layer++&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;1  1  1  1  1	 In the above for loop, we have &lt;code class=&quot;highlighter-rouge&quot;&gt;first = layer; last = N - 1 - layer&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;1  1  1  1  1			then loop &lt;code class=&quot;highlighter-rouge&quot;&gt;i&lt;/code&gt; from &lt;code class=&quot;highlighter-rouge&quot;&gt;first&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;last&lt;/code&gt;, we have &lt;code class=&quot;highlighter-rouge&quot;&gt;offset = i - first&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;1  1  1  1  1				record the top value &lt;code class=&quot;highlighter-rouge&quot;&gt;int top = matrix[first][i]&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;1&lt;/strong&gt;  1  1  1  &lt;strong&gt;1&lt;/strong&gt;				&lt;code class=&quot;highlighter-rouge&quot;&gt;matrix[first][i] = matrix[last - offset][first]&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;/*   then    */				&lt;code class=&quot;highlighter-rouge&quot;&gt;matrix[last - offset][first] = matrix[last][last - offset]&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;1 &lt;strong&gt;1&lt;/strong&gt;  1  1  1					&lt;code class=&quot;highlighter-rouge&quot;&gt;matrix[last][last - offset] = matrix[i][last]&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;1  1  1  1  &lt;strong&gt;1&lt;/strong&gt;					&lt;code class=&quot;highlighter-rouge&quot;&gt;matrix[i][last] = top&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;1  1  1  1  1&lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;1&lt;/strong&gt;  1  1  1  1&lt;/p&gt;
+
+    &lt;p&gt;1  1  1  &lt;strong&gt;1&lt;/strong&gt;  1&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;If an element in M*N matrix is 0, set its row and column to 0&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;record all the 0 elements’ positions, its row and column;&lt;/p&gt;
+
+    &lt;p&gt;set 0 according to that record &lt;code class=&quot;highlighter-rouge&quot;&gt;if row[i] == true || col[j] == true , then  matrix[i][j] = 0 &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;check s2 is a rotation of s1&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;check if length equal&lt;/p&gt;
+
+    &lt;p&gt;concatenate s1 with itself, then check if s2 is a substring of that&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Fri, 10 May 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/05/10/learning-summary-(1).html</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/05/10/learning-summary-(1).html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Top 10 Python libraries of 2016</title>
@@ -89,75 +186,6 @@
         <category>python</category>
         
         <category>django</category>
-        
-      </item>
-    
-      <item>
-        <title>Welcome to Simply Grey</title>
-        <description>&lt;p&gt;SimplyGrey is a simple, easy to use theme for Jekyll that compromises of mainly grey colours. A lot of people enjoy the simplistic look of grey and also find it easier to read.&lt;/p&gt;
-
-&lt;h2 id=&quot;why-use-simply-grey&quot;&gt;Why use Simply Grey?&lt;/h2&gt;
-&lt;p&gt;There are lots of reasons why I think you should use Simply Grey but I will list the main ones that I believe are more of benefit to you, the user.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;em&gt;Easy to use and setup&lt;/em&gt; - Jekyll has a huge range of documentation to get you started writing posts and the Simply Grey theme makes your blog look beautiful.&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;Easy configuration&lt;/em&gt; - I developed this theme in order to be as customisable as possible. If you want to add more links to the navigation bar, all you have to do is edit the _config.yaml file and the &lt;code class=&quot;highlighter-rouge&quot;&gt;urls&lt;/code&gt; part of it.&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;You can change it&lt;/em&gt; - After being released with the MIT license (like Jekyll itself) you are free to change and basically do anything you want to this theme provided you keep the copyright notice in the files and distribute the license with it.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;jekyll&quot;&gt;Jekyll&lt;/h2&gt;
-&lt;p&gt;Jekyll is a static site generator developed in ruby that generates websites from markdown and many other formats. The benefit of this is that you can have a highly customisable blog where you can generate posts by writing easy markdown code whilst still retaining the small memory imprint that Jekyll has.&lt;/p&gt;
-
-&lt;h3 id=&quot;code-snippets&quot;&gt;Code Snippets&lt;/h3&gt;
-&lt;p&gt;Code Snippets are one of the main reasons why I love Jekyll and I think you will too. All code snippets become highlighted with great colours when you write the code in markdown. Here is an example of highlighted Ruby code in a weather application that I have made.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#!/usr/bin/env ruby&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'json'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'net/http'&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'libnotify'&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;parsejson&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;http://api.openweathermap.org/data/2.5/find?q=London&amp;amp;mode=json&quot;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Net&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HTTP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;URI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;weatherjson&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;body&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;actual&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weatherjson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;# check for errors&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;actual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;has_key?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Error'&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;error with the url&quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;actual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;list&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;listitem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;weather&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listitem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;weather&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;weather&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listitem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;main&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;temp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;273.15&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%.2f&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;notify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;summary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;Libnotify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Current temperature is: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;summary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; degrees celsius.&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Current description of conditions: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;summary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:summary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Weather Update&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:timeout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;notify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parsejson&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 23 Dec 2013 01:18:23 +0800</pubDate>
-        <link>http://localhost:4000/jekyll/2013/12/23/welcome-to-simply-grey.html</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll/2013/12/23/welcome-to-simply-grey.html</guid>
-        
-        
-        <category>jekyll</category>
         
       </item>
     
